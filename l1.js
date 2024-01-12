@@ -55,13 +55,7 @@ const productsList = [
       title: "Library stool chair",
       quantity: 1,
     },
-    // {
-    //   id: 9,
-    //   productImg: "./products/mouse.jpg",
-    //   price: "400",
-    //   title: "mouse",
-    //   quantity: 1,
-    // },
+   
   ];
   
   let cartList = [];
