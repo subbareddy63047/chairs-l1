@@ -82,21 +82,21 @@ const productsList = [
       });
       cartList = newCartList;
     }
-    //   console.log(cartList);
-    renderProducts(cartListContainer, cartList);
-    renderFilter();
-    renderCartSummary(cartListContainer, cartList);
+   
+    Products(cartListContainer, cartList);
+    Filter();
+    CartSummary(cartListContainer, cartList);
   }
   
   function removeCartItem(product) {
     const filterList = cartList.filter((each) => each.id !== product.id);
     cartList = filterList;
-    renderProducts(cartListContainer, cartList);
-    renderCartSummary();
-    //   console.log(cartList);
+    Products(cartListContainer, cartList);
+    CartSummary();
+   
   }
   
-  function renderProducts(container, list) {
+  function Products(container, list) {
     container.textContent = "";
     list.forEach((eachProduct) => {
       let productListItem = document.createElement("li");
@@ -152,7 +152,6 @@ const productsList = [
   
   function onProductSeacrh(e) {
     let userSearchvalue = e.target.value;
-    //   console.log(e.target.value);
     let filterList = cartList.filter((each) => {
       if (
         each.price * each.quantity <= parseInt(userSearchvalue) ||
@@ -161,13 +160,11 @@ const productsList = [
         return each;
       }
     });
-    renderProducts(cartListContainer, filterList);
-    console.log(cartList);
+    Products(cartListContainer, filterList);
   }
   
-  function renderFilter() {
+  function Filter() {
     filterContainer.textContent = "";
-    console.log(cartList);
     let leftFilterSection = document.createElement("div");
     filterContainer.appendChild(leftFilterSection);
   
@@ -188,12 +185,12 @@ const productsList = [
   
     clearCart.addEventListener("click", () => {
       cartList = [];
-      renderProducts(cartListContainer, cartList);
-      renderCartSummary();
+        Products(cartListContainer, cartList);
+        CartSummary();
     });
   }
   
-  function renderCartSummary() {
+  function CartSummary() {
     cartSummaryConatiner.textContent = "";
     let price = 0;
     cartList.forEach((each) => {
@@ -236,6 +233,6 @@ const productsList = [
     totalPrice.appendChild(totalCartPrice);
   }
   
-  renderFilter();
-  renderProducts(productsListContainer, productsList);
-  renderCartSummary();
+  Filter();
+  Products(productsListContainer, productsList);
+  CartSummary();
